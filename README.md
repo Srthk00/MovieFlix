@@ -1,16 +1,169 @@
-# React + Vite
+# 🎬 Movie Discovery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern movie discovery web app that allows users to search for movies in real-time, explore popular titles, and view trending movies based on user search behavior.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* 🔍 **Real-time Movie Search**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  * Debounced search input for optimized API calls
+  * Instant results from TMDB API
 
-## Expanding the ESLint configuration
+* 📈 **Trending Movies System**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  * Tracks user searches using Appwrite
+  * Displays top trending movies based on search frequency
+
+* 🎞️ **Popular Movies Feed**
+
+  * Discover movies sorted by popularity
+  * Pagination with "Load More" functionality
+
+* ⚡ **Performance Optimizations**
+
+  * Debounced API requests
+  * Efficient state management
+  * Lazy loading-ready structure
+
+* 🎨 **Modern UI**
+
+  * Built with Tailwind CSS
+  * Responsive design
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React (Vite)
+* Tailwind CSS
+
+### Backend / Services
+
+* Appwrite (Database for tracking trends)
+* TMDB API (Movie data)
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│
+├── Components/
+│   ├── Search.jsx
+│   ├── MovieCard.jsx
+│   └── Spinner.jsx
+│
+├── App.jsx
+├── appwrite.js
+└── index.css
+```
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root and add:
+
+```
+VITE_TMDB_API_KEY=your_tmdb_bearer_token
+VITE_APPWRITE_PROJECT_ID=your_project_id
+VITE_APPWRITE_DATABASE_ID=your_database_id
+VITE_APPWRITE_TABLE_ID=your_table_id
+```
+
+---
+
+## 🧠 How Trending Works
+
+1. When a user searches for a movie:
+
+   * The search term is stored in Appwrite
+   * A count is incremented for that term
+
+2. Trending movies are determined by:
+
+   * Sorting search terms by highest count
+   * Displaying associated movie data
+
+---
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home](./screenshots/home.png)
+
+### 🔍 Search Results
+![Search](./screenshots/search.png)
+
+### 📈 Trending Movies
+![Trending](./screenshots/trending.png)
+
+---
+
+## 🧩 Installation & Setup
+
+1. Clone the repository:
+
+```
+git clone https://github.com/your-username/movie-app.git
+```
+
+2. Navigate to project:
+
+```
+cd movie-app
+```
+
+3. Install dependencies:
+
+```
+npm install
+```
+
+4. Start development server:
+
+```
+npm run dev
+```
+
+---
+
+## 🌐 API Reference
+
+* TMDB API: https://developer.themoviedb.org/
+* Appwrite: https://appwrite.io/
+
+---
+
+## 📌 Notes
+
+* Ensure your TMDB API key has proper access
+* Appwrite database must have correct schema:
+
+  * `searchTerm` (string)
+  * `count` (number)
+  * `movie_id` (string/number)
+  * `poster_url` (string)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to fork the repo and submit a PR.
+
+---
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 💡 Author : Sarthak Kothiyal
+
+Built with ❤️ using React, Appwrite, and TMDB API.
